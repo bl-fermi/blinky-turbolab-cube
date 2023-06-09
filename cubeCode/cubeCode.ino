@@ -33,7 +33,7 @@ void setup()
   BlinkyEtherCube.setBlMqttSocketTimeout(4);
   
   // Must be included
-  BlinkyEtherCube.setMqttServer(mac, "hip-lifeguard.cloudmqtt.com", "vhoosulv", "PzKqhS-V-01a");
+  BlinkyEtherCube.setMqttServer(mac, "192.168.1.211", "maxi-01", "blinky-lite");
   BlinkyEtherCube.setMqttTray("blinky-mqtt","maxi-01");
   BlinkyEtherCube.init(&cubeData);
 
