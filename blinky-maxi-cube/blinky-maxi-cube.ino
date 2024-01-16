@@ -1,3 +1,12 @@
+const boolean CHATTY_CATHY  = false;
+const char*   MQTT_SERVER   = "192.168.0.163";
+const char*   MQTT_USERNAME = "blinkybox-03";
+const char*   MQTT_PASSWORD = "areallybadpassword";
+const char*   BOX           = "blinkybox-03";
+const char*   TRAY_TYPE     = "blinky-mqtt";
+const char*   TRAY_NAME     = "maxi-01";
+const char*   HUB           = "cube";
+
 #include <Controllino.h>  
 union CubeData
 {
@@ -22,20 +31,21 @@ unsigned long publishInterval = 2000;
 
 void setup()
 {
-/*
-  Serial.begin(9600);
-  while (!Serial) {;}
-  delay(1000);
-*/
+  if (CHATTY_CATHY)
+  {
+    Serial.begin(9600);
+    delay(10000);
+  }
+
   // Optional setup to overide defaults
-  BlinkyEtherCube.setChattyCathy(false);
+  BlinkyEtherCube.setChattyCathy(CHATTY_CATHY);
   BlinkyEtherCube.setMqttRetryMs(3000);
   BlinkyEtherCube.setBlMqttKeepAlive(8);
   BlinkyEtherCube.setBlMqttSocketTimeout(4);
   
   // Must be included
-  BlinkyEtherCube.setMqttServer(mac, "192.168.1.161", "blinky-lite-box-01-blinky-mqtt-maxi-01", "areallybadpassword");
-  BlinkyEtherCube.setMqttTray("blinky-lite-box-01","blinky-mqtt","maxi-01", "cube");
+  BlinkyEtherCube.setMqttServer(mac, MQTT_SERVER, MQTT_USERNAME, MQTT_PASSWORD);
+  BlinkyEtherCube.setMqttTray(BOX,TRAY_TYPE,TRAY_NAME, HUB);
   BlinkyEtherCube.init(&cubeData);
 
   lastPublishTime = millis();
