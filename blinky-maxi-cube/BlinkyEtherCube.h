@@ -61,7 +61,7 @@ class BlinkyEtherCube
     void          setBlMqttSocketTimeout(uint16_t blMqttSocketTimeout){g_blMqttSocketTimeout = blMqttSocketTimeout;};
     static void   checkForSettings();
     void          publishToServer();
-    void          setMqttTray(String mqttTrayType, String mqttTrayName);
+    void          setMqttTray(String box, String mqttTrayType, String mqttTrayName, String mqttHub);
     void          setMqttServer(byte* mac, String mqttServer, String mqttUsername, String mqttPassword);
 
 };
@@ -72,11 +72,11 @@ void BlinkyEtherCube::setMqttServer(byte* mac, String mqttServer, String mqttUse
   g_mqttUsername = mqttUsername;
   g_mqttPassword = mqttPassword;
 }
-void BlinkyEtherCube::setMqttTray(String mqttTrayType, String mqttTrayName)
+void BlinkyEtherCube::setMqttTray(String box, String mqttTrayType, String mqttTrayName, String mqttHub)
 {
-  g_mqttClientId = mqttTrayType + "-" + mqttTrayName;
-  g_mqttPublishTopic = mqttTrayType + "/" + mqttTrayName + "/reading";
-  g_mqttSubscribeTopic = mqttTrayType + "/" + mqttTrayName + "/setting";
+  g_mqttClientId = g_mqttUsername + "-" + mqttTrayType + "-" + mqttTrayName;
+  g_mqttPublishTopic = box + "/" + mqttHub + "/" + mqttTrayType + "/" + mqttTrayName + "/reading";
+  g_mqttSubscribeTopic = box + "/" + mqttHub + "/" + mqttTrayType + "/" + mqttTrayName + "/setting";
 }
 
 BlinkyEtherCube::BlinkyEtherCube()
