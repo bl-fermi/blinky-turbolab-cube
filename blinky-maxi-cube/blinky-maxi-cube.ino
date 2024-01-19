@@ -1,8 +1,8 @@
 const boolean CHATTY_CATHY  = false;
-const char*   MQTT_SERVER   = "192.168.0.163";
-const char*   MQTT_USERNAME = "blinkybox-03";
+const char*   MQTT_SERVER   = "192.168.1.156";
+const char*   MQTT_USERNAME = "blinky-lite-box-01";
 const char*   MQTT_PASSWORD = "areallybadpassword";
-const char*   BOX           = "blinkybox-03";
+const char*   BOX           = "blinky-lite-box-01";
 const char*   TRAY_TYPE     = "blinky-mqtt";
 const char*   TRAY_NAME     = "maxi-01";
 const char*   HUB           = "cube";
